@@ -63,6 +63,16 @@ Pruebas unitarias:
 ./gradlew testDebugUnitTest
 ```
 
+## Firma y Google Play
+
+Cada push a `main` genera en GitHub Actions:
+
+- `perfila-debug-apk`: versión de prueba (`mx.perfila.app.debug`).
+- `perfila-release-apk`: APK firmado con la llave de subida de Perfila.
+- `perfila-release-aab`: paquete firmado para Google Play.
+
+El `versionCode` sube solo en cada build. Detalles en `docs/FIRMA_Y_PLAY_STORE.md`.
+
 ## Algoritmo de match v1
 
 Primero se aplican filtros duros (salario que se cruza, modalidad aceptada, traslado dentro del límite). Luego:
