@@ -15,3 +15,5 @@
 google-services.json
 .env
 supabase/.temp/
+keystore.properties
+*.b64.txt
