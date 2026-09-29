@@ -11,19 +11,19 @@
 - `versionName` = `0.1.<build>`. Para cambiar a 0.2, edita `appVersionName` en `app/build.gradle.kts`.
 - La llave nunca vive en el repo. En CI se reconstruye desde un secreto y se borra al terminar el build.
 
-## Paso 1. Crear la llave (una sola vez)
+## Paso 1 y 2. Crear la llave y cargar los secretos (un solo comando)
 
+Requisitos: Android Studio instalado (trae `keytool`) y GitHub CLI (`winget install GitHub.cli`).
 En Windows, desde la carpeta del repo:
 
 ```
 powershell -ExecutionPolicy Bypass -File scripts\crear-llave-firma.ps1
 ```
 
-Queda en `%USERPROFILE%\perfila-llaves\perfila-upload.jks`. **Respáldala** en dos lugares.
+Pide una contraseña, crea la llave en `%USERPROFILE%\perfila-llaves\perfila-upload.jks` y sube los 4 secretos al repo con `gh`. **Respalda la llave** en dos lugares.
 
-## Paso 2. Agregar los secretos en GitHub
-
-`Settings > Secrets and variables > Actions > New repository secret`
+Si no tienes `gh`, el script deja un `.b64.txt` y los secretos se agregan a mano en
+`Settings > Secrets and variables > Actions > New repository secret`:
 
 | Secreto | Valor |
 |---|---|
